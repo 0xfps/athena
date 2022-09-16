@@ -101,9 +101,9 @@ Ownable
     function wrap() external payable {
         /// @dev Require money sent is not 0.
         require(msg.value != 0, "Wrapping 0");
+
         /// @dev Calculate tax.
         uint256 _tax = precalculateTaxForWrap(msg.value);
-
         /// @dev Subtract tax.
         uint256 amountToWrap = msg.value - _tax;
         /// @dev Add that to taxes.
