@@ -32,7 +32,10 @@ interface IAthenaWrap {
     *
     * @param _address Address of wrapper.
     */
-    function totalWrappedByAddress(address _address) external view returns(uint256);
+    function totalWrappedByAddress(address _address) 
+    external 
+    view 
+    returns(uint256);
 
     /**
     * @dev  Returns the total number of native tokens unwrapped by `_address`
@@ -40,7 +43,10 @@ interface IAthenaWrap {
     *
     * @param _address Address of unwrapper.
     */
-    function totalUnwrappedByAddress(address _address) external view returns(uint256);
+    function totalUnwrappedByAddress(address _address) 
+    external 
+    view 
+    returns(uint256);
 
     /**
     * @dev  Returns the total amount of tax that will be charged for the wraping
@@ -48,20 +54,25 @@ interface IAthenaWrap {
     *
     * @param _amount Amount to calculate.
     */
-    function precalculateTaxForWrap(uint256 _amount) external view returns(uint256);
+    function precalculateTaxForWrap(uint256 _amount) 
+    external 
+    pure 
+    returns(uint256);
 
     /**
     * @dev  Wraps `msg.value` amount of tokens, by transferring `msg.value` amount 
-    *       of AETH tokens.
+    *       of AETH tokens after deducting tax.
+    *       This function increments the `_totalWrapped` variable.
     *       Emits a `Wrap()` event.
     */
     function wrap() external payable;
 
     /**
     * @dev  Unraps `_amount` amount of tokens, by transferring `_amount` amount
-    *       of native tokens to caller.
+    *       of native tokens to caller after deducting tax.
     *       Caller must approve contract with GTE `_amount` amount of AETH tokens
     *       before `unwrap()`.
+    *       This function increments the `_totalUnwrapped` variable.
     *       Emits an `Unwrap()` event.
     *
     * @param _amount Amount to unwrap.
