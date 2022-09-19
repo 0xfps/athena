@@ -1,0 +1,335 @@
+{
+  "abi": [],
+  "allSourcePaths": {
+    "13": "contracts/athena/contracts/utils/Guard.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/athena/contracts/utils/Guard.sol",
+    "exportedSymbols": {
+      "Guard": [
+        1293
+      ]
+    },
+    "id": 1294,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1271,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".14"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:24:13"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "Guard",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1272,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:127:13",
+          "text": " @title Guard Contract.\n @author Anthony (fps) https://github.com/0xfps.\n @dev Abstract contract for reentrancy lock."
+        },
+        "fullyImplemented": true,
+        "id": 1293,
+        "linearizedBaseContracts": [
+          1293
+        ],
+        "name": "Guard",
+        "nameLocation": "208:5:13",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1274,
+            "mutability": "mutable",
+            "name": "locked",
+            "nameLocation": "225:6:13",
+            "nodeType": "VariableDeclaration",
+            "scope": 1293,
+            "src": "220:11:13",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1273,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "220:4:13",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1291,
+              "nodeType": "Block",
+              "src": "264:101:13",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1278,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "!",
+                        "prefix": true,
+                        "src": "282:7:13",
+                        "subExpression": {
+                          "id": 1277,
+                          "name": "locked",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1274,
+                          "src": "283:6:13",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4c6f636b6564",
+                        "id": 1279,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "291:8:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_10bc01d611f2c803e55ff98d999836f196afae7cf91f96f3b6f511e56ba84974",
+                          "typeString": "literal_string \"Locked\""
+                        },
+                        "value": "Locked"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_10bc01d611f2c803e55ff98d999836f196afae7cf91f96f3b6f511e56ba84974",
+                          "typeString": "literal_string \"Locked\""
+                        }
+                      ],
+                      "id": 1276,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "274:7:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1280,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "274:26:13",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1281,
+                  "nodeType": "ExpressionStatement",
+                  "src": "274:26:13"
+                },
+                {
+                  "expression": {
+                    "id": 1284,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1282,
+                      "name": "locked",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1274,
+                      "src": "310:6:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 1283,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "319:4:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "310:13:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1285,
+                  "nodeType": "ExpressionStatement",
+                  "src": "310:13:13"
+                },
+                {
+                  "id": 1286,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "333:1:13"
+                },
+                {
+                  "expression": {
+                    "id": 1289,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1287,
+                      "name": "locked",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1274,
+                      "src": "344:6:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "66616c7365",
+                      "id": 1288,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "353:5:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "false"
+                    },
+                    "src": "344:14:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1290,
+                  "nodeType": "ExpressionStatement",
+                  "src": "344:14:13"
+                }
+              ]
+            },
+            "id": 1292,
+            "name": "noReentrance",
+            "nameLocation": "251:12:13",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 1275,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "264:0:13"
+            },
+            "src": "242:123:13",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1294,
+        "src": "190:177:13",
+        "usedErrors": []
+      }
+    ],
+    "src": "36:331:13"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.8.17+commit.8df45f5f"
+  },
+  "contractName": "Guard",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "author": "Anthony (fps) https://github.com/0xfps.",
+    "details": "Abstract contract for reentrancy lock.",
+    "kind": "dev",
+    "methods": {},
+    "title": "Guard Contract.",
+    "version": 1
+  },
+  "offset": [
+    190,
+    367
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "807e6f82ea96999362abcba19d0c9c0f59c277b1",
+  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity ^0.8.14;\n\n/**\n* @title Guard Contract.\n* @author Anthony (fps) https://github.com/0xfps.\n* @dev Abstract contract for reentrancy lock.\n*/\nabstract contract Guard {\n    bool locked;\n    \n    modifier noReentrance {\n        require(!locked, \"Locked\");\n        locked = true;\n        _;\n        locked = false;\n    }\n}",
+  "sourceMap": "",
+  "sourcePath": "contracts/athena/contracts/utils/Guard.sol",
+  "type": "contract"
+}
