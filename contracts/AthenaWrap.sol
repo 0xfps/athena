@@ -98,7 +98,7 @@ Ownable
     /**
     * @inheritdoc IAthenaWrap
     */
-    function wrap() external payable {
+    function wrap() public payable {
         /// @dev Require money sent is not 0.
         require(msg.value != 0, "Wrapping 0");
 
@@ -123,7 +123,7 @@ Ownable
     /**
     * @inheritdoc IAthenaWrap
     */
-    function unwrap(uint256 _amount) external {
+    function unwrap(uint256 _amount) public {
         /// @dev Require money sent is not 0.
         require(_amount != 0, "Wrapping 0");
         /// @dev    Require that this contract has some 
@@ -160,7 +160,7 @@ Ownable
     /**
     * @inheritdoc IAthenaWrap
     */
-    function withdraw() external onlyOwner {
+    function withdraw() public onlyOwner {
         /// @dev Require that taxes have been collected.
         require(tax != 0, "Tax == 0");
 
