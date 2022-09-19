@@ -16,8 +16,8 @@ contract AthenaEther is ERC20 {
     /// @param _wrap Address of AthenaWrap contract.
     constructor(address _wrap) ERC20("AthenaEther", "AETH") {
         /// @dev Mint 1 billion tokens to the AthenaEther Contract.
-        _mint(_wrap, (1 * (10 ** 9)) * (10 ** 18));
+        _mint(_wrap, (10 ** 9) * (10 ** 18)); // 1 Billion Tokens.
         /// @dev Emit {AthenaLaunch} event.
-        emit AthenaLaunch(_wrap, (1 * (10 ** 9) * (10 ** 18)));
+        emit AthenaLaunch(_wrap, (10 ** 9) * (10 ** 18));
     }
 }
