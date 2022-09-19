@@ -91,8 +91,8 @@ Guard
         /// @dev Require that amount is not 0.
         require(_amount != 0, "Amount == 0");
 
-        /// @dev Calculate tax [0.7% of `_amount`].
-        uint256 taxOnAmount = (7 * _amount) / 1000;
+        /// @dev Calculate tax [0.1% of `_amount`].
+        uint256 taxOnAmount = (1 * _amount) / 1000;
 
         /// @dev Return value.
         return taxOnAmount;
