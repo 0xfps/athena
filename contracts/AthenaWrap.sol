@@ -4,6 +4,8 @@ pragma solidity ^0.8.14;
 import {IAthenaWrap} from "./interfaces/IAthenaWrap.sol";
 import {AthenaEther} from "./AthenaEther.sol";
 
+import {Guard} from "./utils/Guard.sol";
+
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
@@ -15,7 +17,8 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 contract AthenaWrap is 
 IAthenaWrap, 
 AthenaEther, 
-Ownable 
+Ownable,
+Guard
 {
     /// @dev Total wrapped in the protocol.
     uint256 private _totalWrapped;
@@ -123,7 +126,7 @@ Ownable
     /**
     * @inheritdoc IAthenaWrap
     */
-    function unwrap(uint256 _amount) public {
+    function unwrap(uint256 _amount) public noReentrance {
         /// @dev Require money sent is not 0.
         require(_amount != 0, "Wrapping 0");
         /// @dev    Require that this contract has some 
