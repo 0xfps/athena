@@ -129,12 +129,6 @@ Guard
     function unwrap(uint256 _amount) public noReentrance {
         /// @dev Require money sent is not 0.
         require(_amount != 0, "Wrapping 0");
-        /// @dev    Require that this contract has some 
-        ///         allowance to spend for caller's tokens.
-        require(
-            allowance(msg.sender, address(this)) >= _amount, 
-            "Allowance < Amount."
-        );
 
         /// @dev Calculate tax.
         uint256 _tax = precalculateTaxForWrap(_amount);
