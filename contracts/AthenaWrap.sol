@@ -114,7 +114,7 @@ Ownable
         _totalWrappedByAddress[msg.sender] += msg.value;
 
         /// @dev Transfer tokens.
-        transfer(address(this), amountToWrap);
+        _transfer(address(this), msg.sender, amountToWrap);
 
         /// @dev Emit the {Wrap()} event.
         emit Wrap(msg.sender, msg.value);
@@ -143,7 +143,7 @@ Ownable
         _totalUnwrappedByAddress[msg.sender] += _amount;
 
         /// @dev Transfer amount from caller to contract.
-        transferFrom(
+        _transfer(
             msg.sender, 
             address(this), 
             _amount

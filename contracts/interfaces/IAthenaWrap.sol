@@ -70,8 +70,6 @@ interface IAthenaWrap {
     /**
     * @dev  Unraps `_amount` amount of tokens, by transferring `_amount` amount
     *       of native tokens to caller after deducting tax.
-    *       Caller must approve contract with GTE `_amount` amount of AETH tokens
-    *       before `unwrap()`.
     *       This function increments the `_totalUnwrapped` variable.
     *       Emits an `Unwrap()` event.
     *
