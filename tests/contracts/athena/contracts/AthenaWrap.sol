@@ -148,7 +148,8 @@ Guard
 
         /// @dev Send transferable value after tax to caller.
         (bool sent, ) = payable(msg.sender).call{value: amountToUnwrap}("");
-        sent; // Unused.
+        /// @dev Ensure that the required amount is sent to the address unwrapping.
+        require(sent, "Unwrap Funds Low.");
 
         /// @dev Emit the {Unwrap()} event.
         emit Unwrap(msg.sender, _amount);
