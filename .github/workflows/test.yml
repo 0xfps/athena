@@ -2,6 +2,7 @@ name: Testing
 on: [push]
 env:
   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+  GITHUB_TOKEN: ${{ secrets.WORKFLOW}}
 jobs:
   Test:
     runs-on: ubuntu-latest
