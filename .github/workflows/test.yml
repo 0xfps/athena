@@ -13,3 +13,4 @@ jobs:
       - run: pip install eth-brownie
       - run: brownie pm install OpenZeppelin/openzeppelin-contracts@4.6.0
       - run: brownie compile
+      - run: brownie test
