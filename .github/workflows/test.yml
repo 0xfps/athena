@@ -1,14 +1,15 @@
 name: Testing
 on: [push]
-PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+env:
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
 jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-      with:
-        python-version: '3.10' 
+        with:
+          python-version: '3.10' 
       - run: python my_script.py
       - run: brownie compile
       - run: brownie test
