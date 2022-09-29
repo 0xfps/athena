@@ -12,6 +12,7 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install eth-brownie
+      - run: brownie install ganache
       - run: brownie pm install OpenZeppelin/openzeppelin-contracts@4.6.0
       - run: brownie compile
       - run: brownie test
