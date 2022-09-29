@@ -1,6 +1,6 @@
-dotenv: .env 
-wallet:
-  from_key: ${PRIVATE_KEY}
+# dotenv: .env 
+# wallet:
+#   from_key: ${PRIVATE_KEY}
 compiler:
     solc:
         remappings:
