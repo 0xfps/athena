@@ -4,7 +4,7 @@
 
 ### [View full details on Notion.](https://www.notion.so/0xfps/AthenaV1-6e0c0f42f8304d3e85f56455a76a23a9)
 
-#### Version: V1 (There might be more soon.)
+#### Version: V1.
 
 <br/>
 
