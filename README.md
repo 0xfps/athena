@@ -2,7 +2,7 @@
 
 ## A simple, decentralized, token wrapping and unwrapping protocol.
 
-### [View full details on Notion.](https://www.notion.so/0xfps/AthenaV1-6e0c0f42f8304d3e85f56455a76a23a9)
+### [View full details on Notion.](https://0xfps.notion.site/AthenaV1-6e0c0f42f8304d3e85f56455a76a23a9)
 
 #### Version: V1.
 
