@@ -1,0 +1,21 @@
+name: Testing
+on: [push]
+env:
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+  GITHUB_TOKEN: ${{ secrets.WORKFLOW}}
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install eth-brownie
+      - run: npm install -g ganache-cli
+      - run: brownie pm install OpenZeppelin/openzeppelin-contracts@4.6.0
+      - run: brownie compile
+      - run: brownie test
