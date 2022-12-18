@@ -161,15 +161,17 @@ Guard
     function withdraw() public onlyOwner {
         /// @dev Require that taxes have been collected.
         require(tax != 0, "Tax == 0");
-
+        
+        /// @dev Move tax.
+        uint256 _tax = tax;
         /// @dev Reset tax.
         tax = 0;
 
         /// @dev Transfer tax earnings.
-        (bool sent, ) = payable(owner()).call{value: tax}("");
+        (bool sent, ) = payable(owner()).call{value: _tax}("");
         sent; // Unused.
 
         /// @dev Emit the {Withdraw()} event.
-        emit Withdraw(msg.sender, tax);
+        emit Withdraw(msg.sender, _tax);
     }
 }
