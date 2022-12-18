@@ -134,4 +134,4 @@ def test_withdraw2():
 	tax_should_be = 5 * 10 ** 15
 	total = (100 * 10 ** 18) + (5 * 10 ** 15)
 
-	assert accounts[0].balance() == "100 ether"
+	assert accounts[0].balance() >= "100 ether"
