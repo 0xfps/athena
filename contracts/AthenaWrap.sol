@@ -34,9 +34,11 @@ Guard
 
     constructor() AthenaEther(address(this)) {}
 
-
     /**
-    * @inheritdoc IAthenaWrap
+    * @dev  Wraps `msg.value` amount of tokens, by transferring `msg.value` amount 
+    *       of AETH tokens after deducting tax.
+    *       This function increments the `_totalWrapped` variable.
+    *       Emits a `Wrap()` event.
     */
     receive() external payable {
         /// @dev Require money sent is not 0.

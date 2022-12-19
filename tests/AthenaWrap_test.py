@@ -67,20 +67,21 @@ def test_withdraw():
 	with reverts():
 		C.withdraw({"from": accounts[0]})
 
-	assert accounts[0].balance() == "100 ether"
+	assert accounts[0].balance() == "1000 ether"
 
 def test_wrap():
 	C = deploy()
 
 	with reverts():
-		C.wrap({"value": "0", "from": accounts[1]})
+		# C.wrap({"value": "0", "from": accounts[1]})
+		accounts[1].transfer(C.address, "0 ether")
 
-	C.wrap({"value": "5 ether", "from": accounts[2]})
+	accounts[2].transfer(C.address, "5 ether")
 
 	tax = (1 * 5) * (10 ** 15)
 	amt = (5 * 10 ** 18) - tax
 
-	assert accounts[2].balance() == "95 ether"
+	assert accounts[2].balance() == "995 ether"
 	assert C.balanceOf(accounts[2]) == amt
 	assert C.totalWrapped() == "5 ether"
 	assert C.totalUnwrapped() == 0
@@ -90,29 +91,33 @@ def test_unwrap():
 	C = deploy()
 
 	with reverts():
-		C.wrap({"value": "0", "from": accounts[1]})
+		# C.wrap({"value": "0", "from": accounts[1]})
+		accounts[1].transfer(C.address, "0 ether")
 
-	C.wrap({"value": "5 ether", "from": accounts[2]})
+	accounts[2].transfer(C.address, "5 ether")
 
 	tax = (1 * 5) * (10 ** 15)
 	amt = (5 * 10 ** 18) - tax
 
-	assert accounts[2].balance() == "90 ether"
+	assert accounts[2].balance() == "990 ether"
 	assert C.balanceOf(accounts[2]) == amt
 	assert C.totalWrapped() == "5 ether"
 	assert C.totalUnwrapped() == 0
 
-	with reverts():
-		C.wrap({"value": "0", "from": accounts[2]})
+	# with reverts():
+	# 	# C.wrap({"value": "0", "from": accounts[1]})
+	# 	accounts[1].transfer(C.address, "0 ether")
+
+	# accounts[2].transfer(C.address, "5 ether")
 
 	C.unwrap(amt, {"from": accounts[2]})
 
 	unwrap_tax = (1 * amt) / 1000
 	unwrap_amt = amt - unwrap_tax
 
-	maybe_total = (90 * 10 ** 18) + unwrap_amt
+	maybe_total = (990 * 10 ** 18) + unwrap_amt
 
-	assert accounts[2].balance() > "90 ether"
+	assert accounts[2].balance() > "990 ether"
 	assert accounts[2].balance() == maybe_total
 	assert C.balanceOf(accounts[2]) == 0
 	assert C.totalWrapped() == "5 ether"
@@ -127,11 +132,15 @@ def test_withdraw2():
 	with reverts():
 		C.withdraw({"from": accounts[0]})
 
-	C.wrap({"value": "5 ether", "from": accounts[2]})
+	with reverts():
+		# C.wrap({"value": "0", "from": accounts[1]})
+		accounts[1].transfer(C.address, "0 ether")
+
+	accounts[2].transfer(C.address, "5 ether")
 
 	C.withdraw({"from": accounts[0]})
 
 	tax_should_be = 5 * 10 ** 15
 	total = (100 * 10 ** 18) + (5 * 10 ** 15)
 
-	assert accounts[0].balance() >= "100 ether"
+	assert accounts[0].balance() >= "1000 ether"
