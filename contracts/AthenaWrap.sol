@@ -22,7 +22,7 @@ Guard
 {
     /// @dev Total wrapped in the protocol.
     uint256 private _totalWrapped;
-    /// @dev Tota unwrapped in the protocol.
+    /// @dev Total unwrapped in the protocol.
     uint256 private _totalUnwrapped;
     /// @dev Protocol tax revenue.
     uint256 private tax;
@@ -34,7 +34,33 @@ Guard
 
     constructor() AthenaEther(address(this)) {}
 
-    receive() external payable {}
+    /**
+    * @dev  Wraps `msg.value` amount of tokens, by transferring `msg.value` amount 
+    *       of AETH tokens after deducting tax.
+    *       This function increments the `_totalWrapped` variable.
+    *       Emits a `Wrap()` event.
+    */
+    receive() external payable {
+        /// @dev Require money sent is not 0.
+        require(msg.value != 0, "Wrapping 0");
+
+        /// @dev Calculate tax.
+        uint256 _tax = precalculateTaxForWrap(msg.value);
+        /// @dev Subtract tax.
+        uint256 amountToWrap = msg.value - _tax;
+        /// @dev Add that to taxes.
+        tax += _tax;
+        /// @dev Increment total wrapped by the value.
+        _totalWrapped += msg.value;
+        /// @dev Increment the total wrapped by caller by value.
+        _totalWrappedByAddress[msg.sender] += msg.value;
+
+        /// @dev Transfer tokens.
+        _transfer(address(this), msg.sender, amountToWrap);
+
+        /// @dev Emit the {Wrap()} event.
+        emit Wrap(msg.sender, msg.value);
+    }
 
     /**
     * @inheritdoc IAthenaWrap
@@ -96,31 +122,6 @@ Guard
 
         /// @dev Return value.
         return taxOnAmount;
-    }
-
-    /**
-    * @inheritdoc IAthenaWrap
-    */
-    function wrap() public payable {
-        /// @dev Require money sent is not 0.
-        require(msg.value != 0, "Wrapping 0");
-
-        /// @dev Calculate tax.
-        uint256 _tax = precalculateTaxForWrap(msg.value);
-        /// @dev Subtract tax.
-        uint256 amountToWrap = msg.value - _tax;
-        /// @dev Add that to taxes.
-        tax += _tax;
-        /// @dev Increment total wrapped by the value.
-        _totalWrapped += msg.value;
-        /// @dev Increment the total wrapped by caller by value.
-        _totalWrappedByAddress[msg.sender] += msg.value;
-
-        /// @dev Transfer tokens.
-        _transfer(address(this), msg.sender, amountToWrap);
-
-        /// @dev Emit the {Wrap()} event.
-        emit Wrap(msg.sender, msg.value);
     }
 
     /**

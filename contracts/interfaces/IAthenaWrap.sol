@@ -60,14 +60,6 @@ interface IAthenaWrap {
     returns(uint256);
 
     /**
-    * @dev  Wraps `msg.value` amount of tokens, by transferring `msg.value` amount 
-    *       of AETH tokens after deducting tax.
-    *       This function increments the `_totalWrapped` variable.
-    *       Emits a `Wrap()` event.
-    */
-    function wrap() external payable;
-
-    /**
     * @dev  Unraps `_amount` amount of tokens, by transferring `_amount` amount
     *       of native tokens to caller after deducting tax.
     *       This function increments the `_totalUnwrapped` variable.
